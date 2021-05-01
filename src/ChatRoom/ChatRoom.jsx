@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './ChatRoom.css'
 import useChat from '../useChat'
+import chatService from '../service/chatService'
 
 const ChatRoom = (props) => {
  const { roomId } = props.match.params
@@ -16,7 +17,12 @@ const ChatRoom = (props) => {
   sendMessage(newMessage)
   setNewMessage('')
  }
-
+ useEffect(() => {
+  chatService.getMessages(roomId).then((data) => {
+   messages.push(...data.rows)
+   console.log(`messages`, messages)
+  })
+ }, [])
  return (
   <div className='chat-room-container'>
    <h1 className='room-name'>Room: {roomId}</h1>
@@ -29,7 +35,7 @@ const ChatRoom = (props) => {
         message.ownedByCurrentUser ? 'my-message' : 'received-message'
        }`}
       >
-       {message.body}
+       {message.message}
       </li>
      ))}
     </ol>
