@@ -13,13 +13,13 @@ const Home = () => {
  return (
   <div className='home-container'>
    <Link
-    to={`/73141453-46b1-45b4-9671-c42b57b6e5df`}
+    to={`/59a0b699-dad3-465a-bca3-3259376a1156`}
     className='enter-room-button'
    >
     User 1
    </Link>
    <Link
-    to={`/755989ea-d3ca-4ad4-837e-bec26d08a0cc`}
+    to={`/5dada5bd-768c-4f4d-8477-279d42dda179`}
     className='enter-room-button'
    >
     user 2

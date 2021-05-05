@@ -1,5 +1,5 @@
 import axios from './axiosDefault'
-const environment = 'http://localhost:8080'
+const environment = 'http://localhost:5000'
 const chatService = {
  getMessages: async function (roomId) {
   try {

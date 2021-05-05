@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './ChatRoom.css'
 import useChat from '../useChat'
@@ -8,7 +8,8 @@ const ChatRoom = (props) => {
  const { roomId } = props.match.params
  const { messages, sendMessage } = useChat(roomId)
  const [newMessage, setNewMessage] = React.useState('')
-
+ const [loading,setloading]=useState(false)
+  
  const handleNewMessageChange = (event) => {
   setNewMessage(event.target.value)
  }
@@ -20,10 +21,12 @@ const ChatRoom = (props) => {
  useEffect(() => {
   chatService.getMessages(roomId).then((data) => {
    messages.push(...data.rows)
+   setloading(true)
    console.log(`messages`, messages)
   })
  }, [])
  return (
+     loading && 
   <div className='chat-room-container'>
    <h1 className='room-name'>Room: {roomId}</h1>
    <div className='messages-container'>
